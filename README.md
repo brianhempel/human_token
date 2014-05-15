@@ -1,5 +1,8 @@
 # HumanToken
 
+[![Gem Version](https://badge.fury.io/rb/human_token.svg)](http://badge.fury.io/rb/human_token)
+[![Build Status](https://travis-ci.org/brianhempel/human_token.svg)](https://travis-ci.org/brianhempel/human_token)
+
 HumanToken is a (relatively) human-friendly token generator. You can create tokens of a given cryptographic strength but without ambiguous characters.
 
 ## Installation
