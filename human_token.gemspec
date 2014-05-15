@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = HumanToken::VERSION
   spec.authors       = ["Brian Hempel"]
   spec.email         = ["plasticchicken@gmail.com"]
-  spec.summary       = %q{Tokens for humans: no ambiguous characters! Highly configurable.}
+  spec.summary       = %q{Tokens for humans: no ambiguous characters! Sensible and configurable.}
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/brianhempel/human_token"
   spec.license       = "Public Domain"
