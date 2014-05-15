@@ -35,7 +35,9 @@ You can specify an alternate number of bytes of randomness.
 HumanToken.generate(8) # => "nte4mh95kvxdde"
 ```
 
-By default, tokens contain lowercase alphanumeric characters, with the exceptions of `0` `1` `i` `l` `o` `u`. Those characters are excluded to prevent ambiguity. The `i` and `o` are not ambiguous when lowercase, but are excluded anyway so the token can be treated case-insensitively: uppercase `I` and `O` are ambiguous. The letter `u` is excluded because, were it were not excluded, when generating 128 bit tokens about 1 in every 340 such tokens would phonetically drop the f-bomb on the viewer.
+By default, tokens contain lowercase alphanumeric characters, with the exceptions of `0` `1` `i` `l` `o` `u`. Those characters are excluded to prevent ambiguity. The `i` and `o` are not ambiguous when lowercase, but are excluded anyway so the token can be treated case-insensitively: uppercase `I` and `O` are ambiguous. The letter `u` is excluded because, if it were included, when generating 128 bit tokens about 1 in every 340 tokens would phonetically drop the f-bomb on the viewer. (HumanToken is taking after [Douglas Crockford](http://www.crockford.com/wrmg/base32.html) here. Crockford may have just been looking for another character to drop since he didn't want to exclude 0 and 1, but 1 in 340 is what the math says and these are supposed to be tokens friendlier for humans.)
+
+The default tokens are lowercase because lowercase is much easier to read.
 
 ## Schemes
 
@@ -51,7 +53,7 @@ HumanToken.new_base_60 # Tantek Çelik's "New Base 60": Mixed case and underscor
 HumanToken.base_62     # All 62 mixed case alphanumerics
 ```
 
-You can also provide a custom scheme.
+You can provide a custom scheme.
 
 ```ruby
 HumanToken.generate(6, characters: "aeiou")
@@ -92,7 +94,7 @@ base_62     "DugJc6"
 
 If you ask for 128 bits (16 bytes) of randomness, you are actually getting _at least_ 128 bits. Why?
 
-Consider the default generator. There are thirty "numerals" used in the default scheme (the 36 alphanumerics, minus 0, 1, I, O, L, and U). Each "numeral" in base 30 encodes about 4.9 bits of information. Thus, a token of length 26 can encdoe 127.6 bits of information. That's not enough for 128 bits of randomness. A token of length 27 can encode 132.5 bits of information.  Why waste the extra space by encoding only 128 bits in a string that can encode 132.5? Thus, HumanToken encodes 132.5 bits of randomness.
+Consider the default generator. There are thirty "numerals" used in the default scheme (the 36 alphanumerics, minus 0, 1, I, O, L, and U). Each "numeral" in base 30 encodes about 4.9 bits of information. A token of length 26 can encdoe 127.6 bits of information. That's not enough for 128 bits of randomness. A token of length 27 can encode 132.5 bits of information.  Why waste the extra space by encoding only 128 bits in a string that can encode 132.5? Therefore, HumanToken encodes 132.5 bits of randomness.
 
 However, if you don't want to explain to your colleagues why your tokens have "132 bit security" instead of a standard number like 128, then you can ask for exactly 128 bits. Your tokens will be the same length, but the first character will appear less random.
 
@@ -125,7 +127,7 @@ Public domain dedication is explained by the CC0 1.0 summary (and only the summa
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/human_token/fork )
+1. Fork it ( http://github.com/brianhempel/human_token/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
