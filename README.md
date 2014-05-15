@@ -41,7 +41,9 @@ You can specify an alternate number of bytes of randomness.
 HumanToken.generate(8) # => "nte4mh95kvxdde"
 ```
 
-By default, tokens contain lowercase alphanumeric characters, with the exceptions of `0` `1` `i` `l` `o` `u`. Those characters are excluded to prevent ambiguity. The `i` and `o` are not ambiguous when lowercase, but are excluded anyway so the token can be treated case-insensitively: uppercase `I` and `O` are ambiguous. The letter `u` is excluded because, if it were included, when generating 128 bit tokens about 1 in every 340 tokens would phonetically drop the f-bomb on the viewer. (HumanToken is taking after [Douglas Crockford](http://www.crockford.com/wrmg/base32.html) here. Crockford may have just been looking for another character to drop since he didn't want to exclude 0 and 1, but 1 in 340 is what the math says and these are supposed to be tokens friendlier for humans.)
+By default, tokens contain lowercase alphanumeric characters, with the exceptions of `0` `1` `i` `l` `o` `u`. Those characters are excluded to prevent ambiguity. The `i` and `o` are not ambiguous when lowercase, but are excluded anyway so the token can be treated case-insensitively: uppercase `I` and `O` are ambiguous.
+
+The letter `u` is excluded because, if it were included, when generating 128 bit tokens about 1 in every 340 tokens would phonetically drop the f-bomb on the viewer—or even more often (a lot more often!) if we count a "u" proceed by an "f". [Douglas Crockford](http://www.crockford.com/wrmg/base32.html) is the inspiration for excluding "u", though he didn't enumerate the math.
 
 The default tokens are lowercase because lowercase is much easier to read.
 
