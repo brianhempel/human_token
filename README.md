@@ -6,15 +6,21 @@ HumanToken is a (relatively) human-friendly token generator. You can create toke
 
 Add this line to your application's Gemfile:
 
-    gem 'human_token'
+```ruby
+gem 'human_token'
+```
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install human_token
+```
+$ gem install human_token
+```
 
 ## Usage
 
