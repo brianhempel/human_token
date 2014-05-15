@@ -50,7 +50,7 @@ The default tokens are lowercase because lowercase is much easier to read.
 Several encoding schemes are provided.
 
 ```ruby
-HumanToken.hex         # Lowercase hexadecimal, mainly for comparison purposes
+HumanToken.hex         # Lowercase hexadecimal (included for comparison purposes)
 HumanToken.base_30     # Lowercase base 30, no 0 1 I L O U (this is the default scheme)
 HumanToken.base_31     # Lowercase base 31, no 0 1 I L O
 HumanToken.base_32     # Crockford's Base 32: Uppercase, no I L O U
